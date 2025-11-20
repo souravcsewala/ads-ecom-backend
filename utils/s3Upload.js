@@ -43,7 +43,7 @@ exports.generateFileName = generateFileName;
 exports.getPublicUrl = buildFileUrl;
 exports.extractKeyFromUrl = extractKeyFromUrl;
 
-const getSignedDownloadUrl = async (keyOrUrl, expiresIn = 300) => {
+const getSignedDownloadUrl = async (keyOrUrl, expiresIn = 3600) => {
   try {
     const key = extractKeyFromUrl(keyOrUrl);
 

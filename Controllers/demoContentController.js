@@ -7,9 +7,12 @@ const signDemoContentMedia = async (contentDoc) => {
 
   const content = contentDoc.toObject ? contentDoc.toObject() : { ...contentDoc };
 
+  // Use longer expiration (2 hours) for demo content to prevent 403 errors on initial page load
+  const DEMO_CONTENT_EXPIRATION = 7200; // 2 hours in seconds
+
   const signField = async (key, fallbackUrl) => {
     const source = key || fallbackUrl;
-    return source ? await getSignedDownloadUrl(source) : "";
+    return source ? await getSignedDownloadUrl(source, DEMO_CONTENT_EXPIRATION) : "";
   };
 
   content.imageUrl = await signField(content.imageKey, content.imageUrl);
