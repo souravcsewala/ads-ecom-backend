@@ -7,8 +7,11 @@ const signTeamMemberMedia = async (memberDoc) => {
 
   const member = memberDoc.toObject ? memberDoc.toObject() : { ...memberDoc };
 
+  // Use longer expiration (2 hours) for team images to prevent 403 errors on initial page load
+  const TEAM_IMAGE_EXPIRATION = 7200; // 2 hours in seconds
+
   if (member.image && member.image.url) {
-    member.image.url = await getSignedDownloadUrl(member.image.url);
+    member.image.url = await getSignedDownloadUrl(member.image.url, TEAM_IMAGE_EXPIRATION);
   }
 
   return member;
