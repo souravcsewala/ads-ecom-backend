@@ -69,6 +69,7 @@ const adminRoute = require("./Routes/adminRoute");
 const uploadRoute = require("./Routes/uploadRoute");
 const meetingRoute = require("./Routes/meetingRoute");
 const meetingRequestRoute = require("./Routes/meetingRequestRoute");
+const portfolioRoute = require("./Routes/portfolioRoute");
 
 //! Register routes
 sub_server.use("/api/auth", authRoute);
@@ -81,6 +82,7 @@ sub_server.use("/api/admin", adminRoute);
 sub_server.use("/api/upload", uploadRoute);
 sub_server.use("/api/meetings", meetingRoute);
 sub_server.use("/api/meeting-requests", meetingRequestRoute);
+sub_server.use("/api/portfolio", portfolioRoute);
 
 //! error middileware (must be last)
 sub_server.use(errorMiddliware);
